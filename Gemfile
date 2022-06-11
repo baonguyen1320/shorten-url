@@ -46,6 +46,8 @@ gem 'cssbundling-rails'
 
 gem 'haml-rails'
 
+gem 'devise'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
