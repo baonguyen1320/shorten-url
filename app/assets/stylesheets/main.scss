@@ -1,0 +1,63 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.width-150 {
+  width: 150px;
+}
+
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.thumb-up {
+  font-weight: 500;
+  color: #20c997
+}
+
+.thumb-down {
+  font-weight: 500;
+  color: #6a1a21;
+}
+
+.toast-message {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  margin: 20px;
+  z-index: 2;
+  opacity: 0;
+  animation: fadeOut 5s cubic-bezier(0.42,0,1,1);
+}
+
+@keyframes fadeOut {
+  from {opacity: 1; visibility: visible}
+  to {opacity: 0; visibility: hidden}
+}
+
+.share-movie .card-title {
+  position: absolute;
+  top: -12px;
+  left: 25px;
+  padding: 0 8px;
+  background: #fff;
+}
+
+.custom-input {
+  border: 0;
+  border-bottom: 1px solid #86b7fe;
+  border-radius: unset;
+  &:focus {
+    box-shadow: none;
+  }
+}
