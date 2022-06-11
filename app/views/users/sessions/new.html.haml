@@ -1,0 +1,28 @@
+.d-flex.justify-content-center.align-items-center.flex-column.vh-100
+  %h2.text-primary Log in
+  = form_with(model: resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f|
+    .mb-3
+      = f.label :email, class: 'mb-1' do
+        %span Email Address
+        %abbr.text-danger *
+      = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: 'email@example.com', required: true
+
+    .mb-3
+      .mb-1.d-flex.justify-content-between
+        = f.label :password do
+          %span Password
+          %abbr.text-danger *
+      = f.password_field :password, class: 'form-control', required: true, autocomplete: "new-password"
+
+    .mb-3
+      = f.submit "Log in", class: 'btn btn-primary w-100'
+
+    .mb-3
+      .text-center.link-to-sign-in
+        %i Do not have an account?
+        = link_to 'Sign up', new_registration_path(resource_name)
+
+      .mt-5.d-flex.small
+        %strong Note:
+        .px-1.text-black-50
+          Password contain at least 6 simple characters
