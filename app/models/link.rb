@@ -33,6 +33,6 @@ class Link < ApplicationRecord
   private
 
   def base_url
-    Rails.env.production? ? 'https://shorten-url-app.herokuapp.com' : 'http://localhost:3000'
+    Rails.env.production? ? 'https://shorten-url-demo.herokuapp.com' : 'http://localhost:3000'
   end
 end

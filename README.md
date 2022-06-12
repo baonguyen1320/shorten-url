@@ -14,7 +14,7 @@ This project help to shorten URL. It allows we are create account and manage the
 
 ### Let prepare HOST and API_KEY firstly
 ```
-$HOST    = 'localhost:3000'
+$HOST    = 'shorten-url-demo.herokuapp.com'
 $API_KEY = 'USER_API_KEY'
 ```
 
