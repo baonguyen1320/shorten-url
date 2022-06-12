@@ -41,11 +41,9 @@ class LinksController < ApplicationController
   def update
     respond_to do |format|
       if @link.update(link_params)
-        format.turbo_stream do
-          render turbo_stream: turbo_stream.update("table-links", partial: 'links/table_links')
-        end
+        format.html { redirect_to links_path, notice: 'Update link successful' }
       else
-        format.html { redirect_to root_path, status: :unprocessable_entity, alert: @link.errors.full_messages.first }
+        format.html { redirect_to links_path, status: :unprocessable_entity, alert: @link.errors.full_messages.first }
       end
     end
   end
@@ -66,7 +64,7 @@ class LinksController < ApplicationController
     end
 
     def set_links
-      @links = Link.order(created_at: :desc)
+      @links = Link.order(created_at: :desc).page(params[:page]).per(params[:per])
     end
 
     # Only allow a list of trusted parameters through.

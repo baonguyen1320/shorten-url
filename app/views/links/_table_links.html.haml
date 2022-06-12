@@ -22,3 +22,6 @@
           %button.btn.btn-primary.d-inline-block{"data-bs-target" => "#edit-modal-#{dom_id(link)}", "data-bs-toggle" => "modal", :type => "button"} Edit
           = button_to 'Destroy', link_path(link), method: :delete, 'data-turbo': false, class: 'btn btn-primary', form_class: 'd-inline-block'
           %button.btn.btn-primary.d-inline-block{"data-bs-target" => "#show-modal-#{dom_id(link)}", "data-bs-toggle" => "modal", :type => "button"} Show
+
+.d-flex.justify-content-center
+  = paginate @links, outer_window: 2, window: 2

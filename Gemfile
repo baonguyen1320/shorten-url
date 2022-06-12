@@ -50,6 +50,8 @@ gem 'devise'
 
 gem 'annotate'
 
+gem 'kaminari'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

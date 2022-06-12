@@ -38,10 +38,10 @@ RSpec.describe LinksController, type: :controller do
   describe '#PUT update' do
     it 'update link successful' do
       link = create(:link, url: 'https://google.com/abc', shorten_code: 'abcd1234')
-      put :update, params: { link: { shorten_code: 'qwert123' }, id: link.id, format: :turbo_stream }
+      put :update, params: { link: { shorten_code: 'qwert123' }, id: link.id }
 
-      expect(response.status).to eq(200)
       expect(Link.last.shorten_code).to eq('qwert123')
+      expect(flash[:notice]).to eq('Update link successful')
     end
 
     it 'update link failed' do
