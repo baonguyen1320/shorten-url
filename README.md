@@ -20,9 +20,9 @@ rspec
 
 # API Guideline
 
-### Let prepare HOST and API_KEY firstly
+### Prerequisite
 ```
-$HOST    = 'YOUR_HOST'
+$HOST    = 'HOST'
 $API_KEY = 'USER_API_KEY'
 ```
 
@@ -44,7 +44,7 @@ curl -XGET "shorten-url-demo.herokuapp.com/api/v1/links" \
 ```
 
 
-### Get all links filter by page params
+### Get links filter by page params
 ``` 
 curl -XGET "$HOST/api/v1/links?page=[page]" \
      --header "Authorization: Token $API_KEY"

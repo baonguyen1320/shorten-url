@@ -41,7 +41,6 @@ module Api::V1
       end
     end
 
-    # DELETE /links/1 or /links/1.json
     def destroy
       link = @current_user.links.find_by(id: params[:id])
       if link&.destroy

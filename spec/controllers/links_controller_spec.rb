@@ -48,7 +48,7 @@ RSpec.describe LinksController, type: :controller do
       link = create(:link, url: 'https://google.com/abc', shorten_code: 'abcd1234', user_id: User.first.id)
       put :update, params: { link: { shorten_code: 'abc' }, id: link.id }
 
-      expect(response.status).to eq(422)
+      expect(response.status).to eq(302)
       expect(flash[:alert]).to eq('Shorten code is too short (minimum is 6 characters)')
     end
   end
