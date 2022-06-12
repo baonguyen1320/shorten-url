@@ -17,14 +17,14 @@ class Link < ApplicationRecord
   validates :url, format: URI::regexp(%w[http https]), presence: true
   validates :shorten_code, uniqueness: true, length: { in: 6..9 }
 
-  before_create :set_shorten_code
+  before_validation :set_shorten_code
 
   def shorten_url
     "#{base_url}/#{shorten_code}"
   end
 
   def set_shorten_code
-    self.shorten_code = SecureRandom.alphanumeric(9)
+    self.shorten_code ||= SecureRandom.alphanumeric(9)
   end
 
   private

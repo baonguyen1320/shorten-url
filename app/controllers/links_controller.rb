@@ -1,10 +1,10 @@
 class LinksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_link, only: %i[ show edit update destroy ]
+  before_action :set_links, only: %i[ index create update ]
 
   # GET /links or /links.json
   def index
-    @links = Link.order(created_at: :desc)
   end
 
   # GET /links/1 or /links/1.json
@@ -23,16 +23,16 @@ class LinksController < ApplicationController
   # POST /links or /links.json
   def create
     @link = Link.find_by(url: link_params[:url]) || current_user.links.build(link_params)
-
     respond_to do |format|
       if @link.save
         format.turbo_stream do
-          render turbo_stream: turbo_stream.update("converted-wrapper", partial: 'links/converted_url', locals: { link: @link.reload })
+          render turbo_stream: [
+            turbo_stream.update("converted-wrapper", partial: 'links/converted_url'),
+            turbo_stream.update("table-links", partial: 'links/table_links')
+          ]
         end
-        format.json { render :show, status: :created, location: @link }
       else
         format.html { redirect_to root_path, status: :unprocessable_entity, alert: @link.errors.full_messages.first }
-        format.json { render json: @link.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -41,11 +41,9 @@ class LinksController < ApplicationController
   def update
     respond_to do |format|
       if @link.update(link_params)
-        format.html { redirect_to root_path, notice: "Link was successfully updated." }
-        format.json { render :show, status: :ok, location: @link }
+        render turbo_stream: turbo_stream.update("table-links", partial: 'links/table_links')
       else
         format.html { redirect_to root_path, status: :unprocessable_entity, alert: @link.errors.full_messages.first }
-        format.json { render json: @link.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -64,6 +62,10 @@ class LinksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_link
       @link = Link.find(params[:id])
+    end
+
+    def set_links
+      @links = Link.order(created_at: :desc)
     end
 
     # Only allow a list of trusted parameters through.

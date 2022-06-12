@@ -1,22 +1,4 @@
 = render 'shorten_url'
+#table-links
+  = render 'table_links'
 
-%table.table.table-success.table-striped
-  %thead
-    %tr
-      %th{:scope => "col"} #
-      %th{:scope => "col"} Original URL
-      %th{:scope => "col"} Shorten URL
-      %th{:scope => "col"} Number Clicks
-      %th.text-center{:scope => "col"} Action
-  %tbody
-    - @links.each_with_index do |link, index|
-      = render partial: 'modal_edit_link', locals: { link: link }
-      %tr
-        %th{:scope => "row"}= index + 1
-        %td= link.url
-        %td= link.shorten_url
-        %td= link.clicks_count
-        %td.d-flex.gap-2
-          %button.btn.btn-primary{"data-bs-target" => "#edit-modal-#{dom_id(link)}", "data-bs-toggle" => "modal", :type => "button"} Edit
-          = link_to 'Destroy', root_path, class: 'btn btn-primary'
-          %button.btn.btn-primary{"data-bs-target" => "#show-modal-#{dom_id(link)}", "data-bs-toggle" => "modal", :type => "button"} Show
