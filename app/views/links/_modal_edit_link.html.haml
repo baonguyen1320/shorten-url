@@ -1,0 +1,17 @@
+= form_with model: link, url: link_path(link), method: :put do |f|
+  .modal.fade{"id" => "edit-modal-#{dom_id(link)}", "aria-hidden" => "true", "aria-labelledby" => "edit-modal-#{dom_id(link)}", :tabindex => "-1"}
+    .modal-dialog.modal-dialog-centered
+      .modal-content
+        .modal-header
+          %h5.modal-title Edit Link
+          %button.btn-close{"aria-label" => "Close", "data-bs-dismiss" => "modal", :type => "button"}
+        .modal-body
+          .mb-3
+            = f.label :url, class: 'mb-1'
+            = f.text_field :url, class: 'form-control'
+          .mb-3
+            = f.label :shorten_code, class: 'mb-1'
+            = f.text_field :shorten_code, class: 'form-control'
+        .modal-footer
+          %button.btn.btn-secondary{"data-bs-dismiss" => "modal", :type => "button"} Cancel
+          = f.submit 'Save changes', class: 'btn btn-primary'

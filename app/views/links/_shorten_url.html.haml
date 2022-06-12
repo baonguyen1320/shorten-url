@@ -1,0 +1,7 @@
+= form_with(model: Link.new, class: 'd-flex justify-content-center', method: :post) do |f|
+  .input-group.w-75
+    = f.text_field :url, placeholder: 'Input URL', class: 'form-control border-primary', autofocus: true
+    = f.submit 'Convert', class: 'button-addon2 btn btn-outline-secondary border-primary'
+
+#converted-wrapper.d-flex.justify-content-center.mt-5
+  = render 'converted_url' if @link.present?
