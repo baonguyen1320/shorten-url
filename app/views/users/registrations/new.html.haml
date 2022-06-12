@@ -1,32 +1,31 @@
 .d-flex.justify-content-center.align-items-center.flex-column.vh-100
-  %h1.text-info.mb-5 Let's create account to share your favorite movies!
   %h2.text-primary Sign up
   = form_with(model: resource, as: resource_name, url: user_registration_path, data: { turbo: false }) do |f|
     .mb-3
       = f.label :name, class: 'mb-1' do
         %span User name
         %abbr.text-danger *
-      = f.text_field :name, autofocus: true, autocomplete: "name", class: 'form-control', placeholder: 'Username', required: true
+      = f.text_field :name, autofocus: true, autocomplete: 'off', class: 'form-control', placeholder: 'Username', required: true
 
     .mb-3
       = f.label :email, class: 'mb-1' do
         %span Email Address
         %abbr.text-danger *
-      = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: 'email@example.com', required: true
+      = f.email_field :email, autofocus: true, autocomplete: 'off', class: 'form-control', placeholder: 'email@example.com', required: true
 
     .mb-3
       .mb-1.d-flex.justify-content-between
         = f.label :password do
           %span Password
           %abbr.text-danger *
-      = f.password_field :password, class: 'form-control', required: true, autocomplete: "new-password"
+      = f.password_field :password, class: 'form-control', required: true, autocomplete: 'off', placeholder: 'Password'
 
     .mb-3
       .mb-1.d-flex.justify-content-between
         = f.label :password_confirmation do
           %span Password Confirmation
           %abbr.text-danger *
-      = f.password_field :password_confirmation, class: 'form-control', required: true, autocomplete: "new-password"
+      = f.password_field :password_confirmation, class: 'form-control', required: true, autocomplete: 'off', placeholder: 'Password Confirmation'
 
     .mb-3
       = f.submit "Sign up", class: 'btn btn-primary w-100'

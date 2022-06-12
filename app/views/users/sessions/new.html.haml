@@ -5,14 +5,14 @@
       = f.label :email, class: 'mb-1' do
         %span Email Address
         %abbr.text-danger *
-      = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: 'email@example.com', required: true
+      = f.email_field :email, autofocus: true, autocomplete: 'on', class: 'form-control', placeholder: 'email@example.com', required: true
 
     .mb-3
       .mb-1.d-flex.justify-content-between
         = f.label :password do
           %span Password
           %abbr.text-danger *
-      = f.password_field :password, class: 'form-control', required: true, autocomplete: "new-password"
+      = f.password_field :password, class: 'form-control', required: true, autocomplete: 'on', placeholder: 'Password'
 
     .mb-3
       = f.submit "Log in", class: 'btn btn-primary w-100'

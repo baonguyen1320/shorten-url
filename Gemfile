@@ -48,6 +48,8 @@ gem 'haml-rails'
 
 gem 'devise'
 
+gem 'annotate'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
