@@ -30,7 +30,7 @@ $API_KEY = '07e5e2a495ef923c1312fb0803a09f59'
 ### Get all links
 ``` 
 curl -XGET "$HOST/api/v1/links" \
-     --header "Authorization: Token $APU_KEY"
+     --header "Authorization: Token $API_KEY"
 ```
 * Example
 ```
@@ -41,8 +41,8 @@ curl -XGET "shorten-url-demo.herokuapp.com/api/v1/links" \
 
 ### Get all links filter by page params
 ``` 
-curl -XGET "$HOST/api/v1/links?page=2" \
-     --header "Authorization: Token $APU_KEY"
+curl -XGET "$HOST/api/v1/links?page=[page]" \
+     --header "Authorization: Token $API_KEY"
 ```
 
 * Example
@@ -76,7 +76,7 @@ curl  -XPOST "shorten-url-demo.herokuapp.com/api/v1/links" \
 ```
 ### Update link
 ``` 
-curl  -XPUT "$HOST/api/v1/links/10" \
+curl  -XPUT "$HOST/api/v1/links/:id" \
       --header "Authorization: Token $API_TOKEN" \
       --header 'Content-Type: application/json' \
       --data-raw '{
@@ -89,7 +89,7 @@ curl  -XPUT "$HOST/api/v1/links/10" \
 
 * Example
 ```
-curl  -XPUT "shorten-url-demo.herokuapp.com/api/v1/links/10" \
+curl  -XPUT "shorten-url-demo.herokuapp.com/api/v1/links/2" \
       --header "Authorization: Token 07e5e2a495ef923c1312fb0803a09f59" \
       --header 'Content-Type: application/json' \
       --data-raw '{
@@ -101,12 +101,12 @@ curl  -XPUT "shorten-url-demo.herokuapp.com/api/v1/links/10" \
 ```
 ### Delete link
 ``` 
-curl  -XDELETE "$HOST/api/v1/links/10" \
+curl  -XDELETE "$HOST/api/v1/links/:id" \
       --header "Authorization: Token $API_TOKEN"
 ```
 
 * Example
 ```
-curl  -XDELETE "shorten-url-demo.herokuapp.com/api/v1/links/10" \
+curl  -XDELETE "shorten-url-demo.herokuapp.com/api/v1/links/2" \
       --header "Authorization: Token 07e5e2a495ef923c1312fb0803a09f59"
 ```
