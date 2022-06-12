@@ -3,8 +3,7 @@
 # Table name: links
 #
 #  id           :bigint           not null, primary key
-#  clicks_count :string
-#  integer      :string
+#  clicks_count :integer          default(0)
 #  shorten_code :string
 #  url          :string
 #  created_at   :datetime         not null
@@ -25,6 +24,10 @@ class Link < ApplicationRecord
 
   def set_shorten_code
     self.shorten_code ||= SecureRandom.alphanumeric(9)
+  end
+
+  def increment_clicks
+    increment!(:clicks_count)
   end
 
   private

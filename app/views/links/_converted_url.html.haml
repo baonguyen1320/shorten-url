@@ -3,4 +3,5 @@
   %svg.arrow-button-svg
     %use(xlink:href="#arrow-bottom")
 
-  %h3.btn.btn-success= @link.shorten_url
+  - shorten_url = @link.shorten_url
+  = link_to shorten_url, shorten_url, class: 'btn btn-success', target: '_blank'

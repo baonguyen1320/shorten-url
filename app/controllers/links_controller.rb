@@ -54,7 +54,6 @@ class LinksController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to links_url, notice: "Link was successfully destroyed." }
-      format.json { head :no_content }
     end
   end
 

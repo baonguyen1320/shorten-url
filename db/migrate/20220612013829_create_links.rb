@@ -3,8 +3,7 @@ class CreateLinks < ActiveRecord::Migration[7.0]
     create_table :links do |t|
       t.string :url
       t.string :shorten_code
-      t.string :clicks_count
-      t.string :integer
+      t.integer :clicks_count, default: 0
       t.references :user
 
       t.timestamps

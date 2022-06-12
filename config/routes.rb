@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "links#index"
   resources :links
+  get '/:shorten_code', to: 'clicks#show'
 end
