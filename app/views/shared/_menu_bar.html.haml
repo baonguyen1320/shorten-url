@@ -1,0 +1,16 @@
+%nav.navbar.navbar-expand-lg.navbar-light.bg-light.mb-5{style: 'border-bottom: 1px solid grey'}
+  .container-fluid
+    .menu-bar.d-flex.justify-content-between.w-100
+      .left-side-bar.d-flex.align-items-center
+        %i.bi.bi-house-fill
+        = link_to 'Shorten URL', root_path, class: 'ms-2 navbar-brand'
+      .right-side-bar
+        - if user_signed_in?
+          .d-flex.gap-3
+            %p.align-self-center.text-secondary Welcome #{current_user.name}
+            = button_to 'Logout', destroy_user_session_path, method: :delete, 'data-turbo': false, class: 'btn btn-primary'
+        - else
+          .d-flex.hstack.gap-3
+            = link_to 'Sign In', new_user_session_path, class: 'btn btn-light'
+            .vr
+            = link_to 'Sign Up', new_user_registration_path, class: 'btn btn-light'

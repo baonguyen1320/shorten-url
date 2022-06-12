@@ -1,5 +1,5 @@
 .d-flex.justify-content-center.align-items-center.flex-column.vh-100
-  %h2.text-primary Log in
+  %h2.text-primary Sign In
   = form_with(model: resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f|
     .mb-3
       = f.label :email, class: 'mb-1' do
@@ -15,12 +15,12 @@
       = f.password_field :password, class: 'form-control', required: true, autocomplete: 'on', placeholder: 'Password'
 
     .mb-3
-      = f.submit "Log in", class: 'btn btn-primary w-100'
+      = f.submit "Sign In", class: 'btn btn-primary w-100'
 
     .mb-3
       .text-center.link-to-sign-in
         %i Do not have an account?
-        = link_to 'Sign up', new_registration_path(resource_name)
+        = link_to 'Sign Up', new_registration_path(resource_name)
 
       .mt-5.d-flex.small
         %strong Note:

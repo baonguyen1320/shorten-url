@@ -9,5 +9,7 @@
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
   %body
-    = render 'shared/toast_message'
-    = yield
+    %main.container
+      = render 'shared/toast_message'
+      = render 'shared/menu_bar'
+      = yield
