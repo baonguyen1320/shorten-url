@@ -1,6 +1,11 @@
 # README
 This project help to shorten URL. It allows we are create account and manage them. Beside that support for API integration.
 
+# Live Demo
+```
+https://shorten-url-demo.herokuapp.com
+```
+
 # Installation
 #### Ruby version: ruby 3.1
 
