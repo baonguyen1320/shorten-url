@@ -10,4 +10,10 @@ Rails.application.routes.draw do
   root "links#index"
   resources :links
   get '/:shorten_code', to: 'clicks#show'
+
+  namespace 'api' do
+    namespace 'v1' do
+      resources :links, only: [:index, :create, :update, :destroy]
+    end
+  end
 end

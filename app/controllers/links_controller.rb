@@ -64,6 +64,7 @@ class LinksController < ApplicationController
     end
 
     def set_links
+      params.slice!(:page, :per)
       @links = Link.order(created_at: :desc).page(params[:page]).per(params[:per])
     end
 

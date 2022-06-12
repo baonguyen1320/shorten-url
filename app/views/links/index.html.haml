@@ -1,4 +1,5 @@
 = render 'shorten_url'
-#table-links
-  = render 'table_links'
+- if @links.present?
+  #table-links
+    = render 'table_links'
 
