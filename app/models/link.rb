@@ -26,7 +26,7 @@ class Link < ApplicationRecord
     self.shorten_code ||= SecureRandom.alphanumeric(9)
   end
 
-  def increment_clicks
+  def increment_clicks!
     increment!(:clicks_count)
   end
 

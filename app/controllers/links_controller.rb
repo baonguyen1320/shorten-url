@@ -41,7 +41,9 @@ class LinksController < ApplicationController
   def update
     respond_to do |format|
       if @link.update(link_params)
-        render turbo_stream: turbo_stream.update("table-links", partial: 'links/table_links')
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.update("table-links", partial: 'links/table_links')
+        end
       else
         format.html { redirect_to root_path, status: :unprocessable_entity, alert: @link.errors.full_messages.first }
       end
