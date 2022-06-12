@@ -4,15 +4,19 @@
       %th{:scope => "col"} #
       %th{:scope => "col"} Original URL
       %th{:scope => "col"} Shorten URL
-      %th{:scope => "col"} Number Clicks
+      %th{:scope => "col"} Clicks Count
       %th.text-center{:scope => "col"} Action
   %tbody
     - @links.each_with_index do |link, index|
       = render partial: 'modal_edit_link', locals: { link: link }
+      = render partial: 'modal_show_link', locals: { link: link }
       %tr
         %th{:scope => "row"}= index + 1
         %td= link.url
-        %td= link.shorten_url
+        %td
+          - shorten_url =  link.shorten_url
+          = link_to shorten_url, shorten_url, target: '_blank'
+
         %td= link.clicks_count
         %td{style: 'min-width: 235px'}
           %button.btn.btn-primary.d-inline-block{"data-bs-target" => "#edit-modal-#{dom_id(link)}", "data-bs-toggle" => "modal", :type => "button"} Edit

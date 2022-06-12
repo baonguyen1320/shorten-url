@@ -1,0 +1,23 @@
+.modal.fade{"id" => "show-modal-#{dom_id(link)}", "aria-hidden" => "true", "aria-labelledby" => "show-modal-#{dom_id(link)}", :tabindex => "-1"}
+  .modal-dialog.modal-dialog-centered
+    .modal-content
+      .modal-header
+        %h5.modal-title Show Detail
+        %button.btn-close{"aria-label" => "Close", "data-bs-dismiss" => "modal", :type => "button"}
+      .modal-body
+        .list-group
+          .list-group-item.list-group-item-action
+            .w-100.mt-2
+              %h5.mb-1 Original URL
+              %p= link.url
+            .w-100.mt-2
+              %h5.mb-1 Shorten URL
+              %p= link.shorten_url
+            .w-100.mt-2
+              %h5.mb-1 Clicks count
+              %p= link.clicks_count
+            .w-100.mt-2
+              %h5.mb-1 Created at
+              %p= link.created_at.strftime('%Y-%m-%d %H:%M')
+      .modal-footer
+        %button.btn.btn-secondary{"data-bs-dismiss" => "modal", :type => "button"} Cancel
