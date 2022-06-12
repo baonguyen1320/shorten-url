@@ -37,7 +37,7 @@ RSpec.describe LinksController, type: :controller do
 
   describe '#PUT update' do
     it 'update link successful' do
-      link = create(:link, url: 'https://google.com/abc', shorten_code: 'abcd1234')
+      link = create(:link, url: 'https://google.com/abc', shorten_code: 'abcd1234', user_id: User.first.id)
       put :update, params: { link: { shorten_code: 'qwert123' }, id: link.id }
 
       expect(Link.last.shorten_code).to eq('qwert123')
@@ -45,7 +45,7 @@ RSpec.describe LinksController, type: :controller do
     end
 
     it 'update link failed' do
-      link = create(:link, url: 'https://google.com/abc', shorten_code: 'abcd1234')
+      link = create(:link, url: 'https://google.com/abc', shorten_code: 'abcd1234', user_id: User.first.id)
       put :update, params: { link: { shorten_code: 'abc' }, id: link.id }
 
       expect(response.status).to eq(422)
@@ -55,7 +55,7 @@ RSpec.describe LinksController, type: :controller do
 
   describe '#DELETE link' do
     it 'should delete succesful' do
-      link = create(:link)
+      link = create(:link, user_id: User.first.id)
       expect do
         delete :destroy, params: { id: link.id }
       end.to change { Link.count }.by(-1)

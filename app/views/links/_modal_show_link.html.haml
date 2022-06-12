@@ -9,10 +9,10 @@
           .list-group-item.list-group-item-action
             .w-100.mt-2
               %h5.mb-1 Original URL
-              %p= link.url
+              = link_to link.url, link.url, target: '_blank'
             .w-100.mt-2
               %h5.mb-1 Shorten URL
-              %p= link.shorten_url
+              = link_to link.shorten_url, link.shorten_url, target: '_blank'
             .w-100.mt-2
               %h5.mb-1 Clicks count
               %p= link.clicks_count
