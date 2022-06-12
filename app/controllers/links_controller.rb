@@ -53,12 +53,12 @@ class LinksController < ApplicationController
   private
 
   def set_link
-    @link = Link.find(params[:id])
+    @link = current_user.links.find(params[:id])
   end
 
   def set_links
     params.slice!(:page, :per)
-    @links = Link.order(created_at: :desc).page(params[:page]).per(params[:per])
+    @links = current_user.links.order(created_at: :desc).page(params[:page]).per(params[:per])
   end
 
   def link_params
